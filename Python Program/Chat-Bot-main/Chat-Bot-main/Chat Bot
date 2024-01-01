@@ -1,0 +1,23 @@
+import nltk
+from nltk.chat.util import Chat, reflections
+
+pairs = [
+    ["my name is (.*)", ["Hi %1, how can I help you today?"]],
+    ["(hi|hello|hey|hey there)", ["Hello, how can I assist you?"]],
+    # Add more patterns and responses here
+]
+
+chatbot = Chat(pairs, reflections)
+
+def run_chatbot():
+    print("Hello! I'm your chatbot. Type 'exit' to end the conversation.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'exit':
+            break
+        else:
+            response = chatbot.respond(user_input)
+            print("Bot:", response)
+
+if __name__ == "__main__":
+    run_chatbot()
